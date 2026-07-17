@@ -125,24 +125,34 @@ Two very different models. This choice shapes everything else:
 
 ---
 
-## 9. Design Tokens ✅
+## 9. Design Tokens ✅ — "Genda" identity
 
-**Palette — "modern minimal + traditional accents":**
+Grounded in real marigold garlands, not a generic cream+terracotta template.
+Implemented in `src/lib/styles/theme.css` (Tailwind v4 `@theme`).
 
-| Role           | Color                 | Hex       |
-| -------------- | --------------------- | --------- |
-| Background     | Warm ivory            | `#FBF8F3` |
-| Surface        | Soft cream            | `#F3ECE0` |
-| Text / ink     | Deep charcoal-brown   | `#1F1B16` |
-| Primary accent | Marigold / saffron    | `#E0912F` |
-| Secondary      | Deep maroon (festive) | `#7B2D3A` |
-| Metallic       | Gold                  | `#C9A24B` |
-| Fresh accent   | Muted sage green      | `#8A9A7B` |
+**Palette:**
 
-**Type:**
+| Role                    | Name              | Hex       |
+| ----------------------- | ----------------- | --------- |
+| Background              | Petal ivory       | `#FBF3EF` |
+| Surface                 | Warm surface      | `#F6E8E0` |
+| Text / ink              | Deep maroon-plum  | `#2A1620` |
+| Muted text              | Soft maroon       | `#6B4A55` |
+| Hairline / borders      | Line              | `#E6D3CA` |
+| Primary accent          | Marigold          | `#EA7A24` |
+| Primary (deep)          | Marigold deep     | `#C85F13` |
+| Secondary (the risk)    | Rani pink         | `#C42A6B` |
+| Fresh accent            | Leaf green        | `#3E6B4F` |
+| Metallic detail         | Gold              | `#C79A3E` |
 
-- Display / headings: **Cormorant Garamond** (or Playfair Display) — elegant serif.
-- Body / UI: **Manrope** (or Inter) — clean sans.
-- Gujarati: **Noto Serif Gujarati** (headings) + **Noto Sans Gujarati** (body).
+**Type (self-hosted via Fontsource):**
 
-> Exposed as CSS variables / Tailwind theme tokens so white-label rebrands are a config change.
+- Display / headings: **Fraunces** (variable, optical) — festive-elegant, used with restraint.
+- Body / UI: **Hanken Grotesk** (variable) — warm, quiet, modern.
+- Gujarati: **Hind Vadodara** — auto-swapped via `html:lang(gu)`.
+
+**Signature element:** hanging marigold-garland **toran** (`src/lib/components/Toran.svelte`).
+
+> Exposed as CSS variables in Tailwind's `@theme` so a white-label rebrand = editing this
+> file + `src/lib/config/site.ts`. Quality floor baked in: visible `:focus-visible`,
+> `prefers-reduced-motion` respected, responsive to mobile.

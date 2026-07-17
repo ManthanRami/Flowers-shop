@@ -1,1 +1,12 @@
 @import 'tailwindcss';
+
+/* Self-hosted fonts (Fontsource) */
+@import '@fontsource-variable/fraunces';
+@import '@fontsource-variable/hanken-grotesk';
+@import '@fontsource/hind-vadodara/400.css';
+@import '@fontsource/hind-vadodara/500.css';
+@import '@fontsource/hind-vadodara/600.css';
+@import '@fontsource/hind-vadodara/700.css';
+
+/* "Genda" design tokens + base styles */
+@import '$lib/styles/theme.css';
