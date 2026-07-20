@@ -7,25 +7,20 @@
 		...serviceList().map((s) => ({ key: s.key, label: s.name }))
 	]);
 
-	// Placeholder tiles. Each becomes a real Cloudinary photo from the DB later;
-	// `tall` just varies the masonry rhythm so the wall reads like a photo grid.
-	const photos: { id: number; category: ServiceKey; tall: boolean }[] = [
-		{ id: 1, category: 'wedding', tall: true },
-		{ id: 2, category: 'haldi', tall: false },
-		{ id: 3, category: 'sangeet', tall: false },
-		{ id: 4, category: 'mehndi', tall: true },
-		{ id: 5, category: 'reception', tall: false },
-		{ id: 6, category: 'wedding', tall: false },
-		{ id: 7, category: 'corporate', tall: true },
-		{ id: 8, category: 'haldi', tall: false },
-		{ id: 9, category: 'sangeet', tall: true },
-		{ id: 10, category: 'reception', tall: false },
-		{ id: 11, category: 'mehndi', tall: false },
-		{ id: 12, category: 'wedding', tall: true }
+	// Stand-in images from the Lovable prototype, each filed under the event type
+	// it actually depicts. Real photos will come from Cloudinary via the DB.
+	const photos: { id: number; src: string; category: ServiceKey; tall: boolean }[] = [
+		{ id: 1, src: '/images/gallery-wedding.jpg', category: 'wedding', tall: true },
+		{ id: 2, src: '/images/gallery-stage.jpg', category: 'reception', tall: false },
+		{ id: 3, src: '/images/gallery-event.jpg', category: 'sangeet', tall: false },
+		{ id: 4, src: '/images/gallery-car.jpg', category: 'wedding', tall: false },
+		{ id: 5, src: '/images/gallery-room.jpg', category: 'wedding', tall: true }
 	];
 
 	let active = $state<'all' | ServiceKey>('all');
 	const visible = $derived(active === 'all' ? photos : photos.filter((p) => p.category === active));
+
+	const serviceName = $derived(Object.fromEntries(serviceList().map((s) => [s.key, s.name])));
 </script>
 
 <section class="section" id="work">
@@ -50,11 +45,16 @@
 
 		<div class="wall">
 			{#each visible as photo (photo.id)}
-				<figure class="photo photo--{photo.category}" class:photo--tall={photo.tall}>
-					<figcaption class="photo__label">{m.work_placeholder()}</figcaption>
+				<figure class="photo" class:photo--tall={photo.tall}>
+					<img src={photo.src} alt={serviceName[photo.category]} loading="lazy" />
+					<figcaption class="photo__label">{serviceName[photo.category]}</figcaption>
 				</figure>
 			{/each}
 		</div>
+
+		{#if visible.length === 0}
+			<p class="wall__empty">{m.work_placeholder()}</p>
+		{/if}
 	</div>
 </section>
 
@@ -80,7 +80,7 @@
 			border-color 0.2s ease;
 	}
 	.filter:hover {
-		border-color: var(--color-marigold);
+		border-color: var(--color-primary);
 		color: var(--color-ink);
 	}
 	.filter.is-active {
@@ -107,45 +107,42 @@
 	}
 
 	.photo {
+		position: relative;
 		break-inside: avoid;
 		margin: 0 0 0.85rem;
-		height: 14rem;
 		border-radius: var(--radius-md);
-		display: grid;
-		place-items: end start;
-		padding: 0.75rem;
 		overflow: hidden;
+		background: var(--color-surface);
 	}
-	.photo--tall {
+	.photo img {
+		display: block;
+		width: 100%;
+		height: 14rem;
+		object-fit: cover;
+		transition: transform 0.4s ease;
+	}
+	.photo--tall img {
 		height: 20rem;
 	}
-	.photo__label {
-		font-size: 0.7rem;
-		letter-spacing: 0.08em;
-		text-transform: uppercase;
-		color: color-mix(in srgb, #fff 85%, transparent);
-		background: rgb(0 0 0 / 0.2);
-		padding: 0.3rem 0.6rem;
-		border-radius: var(--radius-full);
+	.photo:hover img {
+		transform: scale(1.05);
 	}
 
-	/* Placeholder colour per service — replaced by real photos later. */
-	.photo--wedding {
-		background: linear-gradient(150deg, var(--color-marigold), var(--color-marigold-deep));
+	/* Gradient rather than a flat tint: keeps the label legible over any photo
+	   without dimming the whole image. */
+	.photo__label {
+		position: absolute;
+		inset: auto 0 0 0;
+		padding: 2.5rem 0.9rem 0.75rem;
+		background: linear-gradient(to top, rgb(0 0 0 / 0.75), transparent);
+		color: #fff;
+		font-size: 0.8rem;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
 	}
-	.photo--haldi {
-		background: linear-gradient(150deg, var(--color-gold), var(--color-marigold-deep));
-	}
-	.photo--mehndi {
-		background: linear-gradient(150deg, var(--color-rani), #8a1a4c);
-	}
-	.photo--sangeet {
-		background: linear-gradient(150deg, var(--color-rani), var(--color-marigold));
-	}
-	.photo--reception {
-		background: linear-gradient(150deg, var(--color-ink), var(--color-gold));
-	}
-	.photo--corporate {
-		background: linear-gradient(150deg, var(--color-leaf), #2c4f39);
+
+	.wall__empty {
+		margin-top: 2rem;
+		color: var(--color-ink-soft);
 	}
 </style>

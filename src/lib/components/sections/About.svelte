@@ -68,6 +68,6 @@
 		width: 0.6rem;
 		height: 0.6rem;
 		border-radius: 0 var(--radius-full) 0 var(--radius-full);
-		background: var(--color-marigold);
+		background: var(--color-primary);
 	}
 </style>

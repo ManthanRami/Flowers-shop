@@ -40,13 +40,13 @@
 	.step {
 		position: relative;
 		padding-top: 1.25rem;
-		border-top: 2px solid var(--color-marigold);
+		border-top: 2px solid var(--color-primary);
 	}
 	.step__num {
 		font-family: var(--font-display);
 		font-size: 1rem;
 		font-weight: 600;
-		color: var(--color-marigold-deep);
+		color: var(--color-primary-deep);
 		letter-spacing: 0.05em;
 	}
 	.step__name {

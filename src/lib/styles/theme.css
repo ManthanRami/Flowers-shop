@@ -1,28 +1,33 @@
 /*
- * "Genda" design tokens — Gujarati flower-decoration identity.
- * Grounded in real marigold garlands: petal-ivory ground, deep maroon ink,
- * marigold + rani-pink as the festive pairing, leaf green + gold as detail.
+ * "Lovable" design tokens — ported from the Lovable prototype at
+ * jaymahakali-blooms-showcase.lovable.app.
+ *
+ * Rose + gold on a warm near-white ground, Playfair Display over Lato.
+ * Token names are semantic (primary/accent) rather than colour-named, so the
+ * components read the same on either design branch.
  *
  * White-label: to rebrand, override the @theme color/font values here.
  */
 
 @theme {
 	/* ── Palette ─────────────────────────────────────────── */
-	--color-base: #fbf3ef; /* petal ivory — warm, faintly rosy ground */
-	--color-surface: #f6e8e0; /* raised cards / alt sections */
-	--color-ink: #2a1620; /* deep maroon-plum — primary text */
-	--color-ink-soft: #6b4a55; /* muted maroon — secondary text */
-	--color-line: #e6d3ca; /* hairline borders / dividers */
+	--color-base: #fbfaf9; /* warm near-white ground */
+	--color-surface: #f1eeef; /* raised cards / alt sections */
+	--color-ink: #361721; /* deep maroon-plum — primary text */
+	--color-ink-soft: #8a5c6b; /* muted mauve — secondary text */
+	--color-line: #e7dade; /* hairline borders / dividers */
 
-	--color-marigold: #ea7a24; /* primary — genda saffron-orange */
-	--color-marigold-deep: #c85f13;
-	--color-rani: #c42a6b; /* secondary — rani pink (the risk) */
-	--color-leaf: #3e6b4f; /* fresh accent — garland leaf green */
-	--color-gold: #c79a3e; /* fine metallic detail */
+	/* Lovable ships primary at #dd3c57, which is only 4.32:1 against white and
+	   fails WCAG AA for button text. Darkened to 5.07:1; visually near-identical. */
+	--color-primary: #d42543; /* rose — CTAs, active states */
+	--color-primary-deep: #a01c32;
+	--color-accent: #ac5371; /* muted mauve-pink — secondary detail */
+	--color-gold: #d9a520; /* metallic gold — always pairs with ink text */
+	--color-maroon: #1b0e12; /* deep maroon — full-bleed dark sections */
 
 	/* ── Type ────────────────────────────────────────────── */
-	--font-display: 'Fraunces Variable', 'Hind Vadodara', ui-serif, Georgia, serif;
-	--font-body: 'Hanken Grotesk Variable', 'Hind Vadodara', ui-sans-serif, system-ui, sans-serif;
+	--font-display: 'Playfair Display', 'Hind Vadodara', ui-serif, Georgia, serif;
+	--font-body: 'Lato', 'Hind Vadodara', ui-sans-serif, system-ui, sans-serif;
 	--font-gujarati: 'Hind Vadodara', ui-sans-serif, system-ui, sans-serif;
 
 	/* ── Radii ───────────────────────────────────────────── */
@@ -46,7 +51,7 @@
 		text-rendering: optimizeLegibility;
 	}
 
-	/* Gujarati: Fraunces has no Gujarati glyphs — use Hind Vadodara throughout. */
+	/* Gujarati: Playfair has no Gujarati glyphs — use Hind Vadodara throughout. */
 	html:lang(gu) {
 		font-family: var(--font-gujarati);
 	}
@@ -61,8 +66,8 @@
 	h4 {
 		font-family: var(--font-display);
 		font-weight: 500;
-		line-height: 1.05;
-		letter-spacing: -0.015em;
+		line-height: 1.1;
+		letter-spacing: -0.01em;
 		text-wrap: balance;
 	}
 
@@ -71,13 +76,13 @@
 	}
 
 	::selection {
-		background-color: var(--color-rani);
-		color: var(--color-base);
+		background-color: var(--color-primary);
+		color: #fff;
 	}
 
 	/* Quality floor: always-visible keyboard focus. */
 	:focus-visible {
-		outline: 2px solid var(--color-marigold);
+		outline: 2px solid var(--color-primary);
 		outline-offset: 2px;
 		border-radius: var(--radius-sm);
 	}
@@ -113,7 +118,7 @@
 		font-weight: 600;
 		letter-spacing: 0.14em;
 		text-transform: uppercase;
-		color: var(--color-leaf);
+		color: var(--color-primary);
 	}
 
 	.section-title {

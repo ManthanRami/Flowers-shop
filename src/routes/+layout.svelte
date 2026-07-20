@@ -99,7 +99,7 @@
 		width: 0.7rem;
 		height: 0.7rem;
 		border-radius: var(--radius-full);
-		background: radial-gradient(circle at 35% 35%, var(--color-marigold), var(--color-rani));
+		background: radial-gradient(circle at 35% 35%, var(--color-primary), var(--color-accent));
 	}
 
 	.site-nav {
@@ -113,7 +113,7 @@
 		transition: color 0.2s ease;
 	}
 	.site-nav a:hover {
-		color: var(--color-rani);
+		color: var(--color-accent);
 	}
 	@media (min-width: 820px) {
 		.site-nav {
@@ -169,7 +169,7 @@
 		border-bottom: 1px solid var(--color-line);
 	}
 	.site-footer__meta a:hover {
-		color: var(--color-rani);
+		color: var(--color-accent);
 	}
 	.site-footer__fine {
 		margin-top: 1.25rem;

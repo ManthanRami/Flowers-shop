@@ -1,7 +1,6 @@
 <script lang="ts">
 	import * as m from '$lib/paraglide/messages';
 	import { site, whatsappLink } from '$lib/config/site';
-	import Toran from '$lib/components/Toran.svelte';
 	import Gallery from '$lib/components/sections/Gallery.svelte';
 	import Services from '$lib/components/sections/Services.svelte';
 	import Process from '$lib/components/sections/Process.svelte';
@@ -22,12 +21,10 @@
 </svelte:head>
 
 <section class="hero">
-	<!-- Placeholder backdrop. Swap for a full-bleed hero photo (or muted video). -->
 	<div class="hero__media" aria-hidden="true"></div>
 	<div class="hero__scrim" aria-hidden="true"></div>
 
 	<div class="hero__inner wrap">
-		<Toran class="hero__toran" count={20} />
 		<p class="hero__eyebrow">{m.hero_eyebrow({ city: site.city })}</p>
 		<h1 class="hero__title">
 			<span>{m.hero_title_line1()}</span>
@@ -69,28 +66,12 @@
 		isolation: isolate;
 	}
 
-	/* Warm floral placeholder — stands in for a real hero photo. */
 	.hero__media {
 		position: absolute;
 		inset: 0;
 		z-index: -2;
-		background:
-			radial-gradient(
-				60% 55% at 30% 25%,
-				color-mix(in srgb, var(--color-marigold) 65%, #000),
-				transparent
-			),
-			radial-gradient(
-				55% 55% at 78% 30%,
-				color-mix(in srgb, var(--color-rani) 60%, #000),
-				transparent
-			),
-			radial-gradient(
-				70% 60% at 60% 100%,
-				color-mix(in srgb, var(--color-leaf) 55%, #000),
-				transparent
-			),
-			var(--color-ink);
+		background: url('/images/hero-wedding.jpg') center / cover no-repeat;
+		background-color: var(--color-maroon);
 	}
 	.hero__scrim {
 		position: absolute;
@@ -109,10 +90,6 @@
 		padding-block: 2.5rem;
 		color: #fff;
 	}
-	:global(.hero__toran) {
-		margin-bottom: 1.5rem;
-	}
-
 	.hero__eyebrow {
 		font-size: 0.85rem;
 		letter-spacing: 0.14em;
@@ -130,7 +107,7 @@
 	}
 	.hero__accent {
 		font-style: italic;
-		color: color-mix(in srgb, var(--color-rani) 60%, #fff);
+		color: color-mix(in srgb, var(--color-accent) 60%, #fff);
 	}
 	.hero__body {
 		max-width: 42rem;
@@ -163,14 +140,12 @@
 	.btn:hover {
 		transform: translateY(-2px);
 	}
-	/* Ink rather than white on marigold: white gives 2.87:1 and fails WCAG AA,
-	   ink gives 5.92:1. Hover brightens instead of darkening for the same reason. */
 	.btn--primary {
-		background: var(--color-marigold);
-		color: var(--color-ink);
+		background: var(--color-primary);
+		color: #fff;
 	}
 	.btn--primary:hover {
-		filter: brightness(1.06);
+		background: var(--color-primary-deep);
 	}
 	.btn--ghost {
 		background: rgb(255 255 255 / 0.12);

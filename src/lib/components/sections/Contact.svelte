@@ -65,7 +65,7 @@
 
 <style>
 	.contact {
-		background: var(--color-ink);
+		background: var(--color-maroon);
 		color: var(--color-base);
 	}
 	.contact .section-title,
@@ -131,8 +131,8 @@
 		padding: 0.95rem 1.5rem;
 		border: 0;
 		border-radius: var(--radius-full);
-		background: linear-gradient(90deg, var(--color-marigold), var(--color-gold));
-		color: var(--color-ink);
+		background: linear-gradient(90deg, var(--color-gold), #aa8c2c);
+		color: var(--color-maroon);
 		font: inherit;
 		font-weight: 700;
 		font-size: 1rem;

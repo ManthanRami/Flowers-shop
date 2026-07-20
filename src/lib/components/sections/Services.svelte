@@ -47,20 +47,16 @@
 		width: 1.6rem;
 		height: 1.6rem;
 		border-radius: var(--radius-full);
-		background: radial-gradient(
-			circle at 30% 30%,
-			var(--color-marigold),
-			var(--color-marigold-deep)
-		);
-		box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-marigold) 18%, transparent);
+		background: radial-gradient(circle at 30% 30%, var(--color-primary), var(--color-primary-deep));
+		box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-primary) 18%, transparent);
 	}
 	.card:nth-child(3n + 2) .card__mark {
-		background: radial-gradient(circle at 30% 30%, var(--color-rani), #9b1f54);
-		box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-rani) 18%, transparent);
+		background: radial-gradient(circle at 30% 30%, var(--color-accent), #9b1f54);
+		box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-accent) 18%, transparent);
 	}
 	.card:nth-child(3n) .card__mark {
-		background: radial-gradient(circle at 30% 30%, var(--color-leaf), #2c4f39);
-		box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-leaf) 18%, transparent);
+		background: radial-gradient(circle at 30% 30%, var(--color-gold), #9a7010);
+		box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-gold) 18%, transparent);
 	}
 	.card__name {
 		margin-top: 1.1rem;
