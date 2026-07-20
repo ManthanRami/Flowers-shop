@@ -1,27 +1,15 @@
 <script lang="ts">
 	import * as m from '$lib/paraglide/messages';
-
-	type Category =
-		| 'wedding'
-		| 'haldi'
-		| 'mehndi'
-		| 'sangeet'
-		| 'reception'
-		| 'corporate';
+	import { serviceList, type ServiceKey } from '$lib/config/services';
 
 	const filters = $derived([
 		{ key: 'all' as const, label: m.gallery_all() },
-		{ key: 'wedding' as const, label: m.service_wedding_name() },
-		{ key: 'haldi' as const, label: m.service_haldi_name() },
-		{ key: 'mehndi' as const, label: m.service_mehndi_name() },
-		{ key: 'sangeet' as const, label: m.service_sangeet_name() },
-		{ key: 'reception' as const, label: m.service_reception_name() },
-		{ key: 'corporate' as const, label: m.service_corporate_name() }
+		...serviceList().map((s) => ({ key: s.key, label: s.name }))
 	]);
 
 	// Placeholder tiles. Each becomes a real Cloudinary photo from the DB later;
 	// `tall` just varies the masonry rhythm so the wall reads like a photo grid.
-	const photos: { id: number; category: Category; tall: boolean }[] = [
+	const photos: { id: number; category: ServiceKey; tall: boolean }[] = [
 		{ id: 1, category: 'wedding', tall: true },
 		{ id: 2, category: 'haldi', tall: false },
 		{ id: 3, category: 'sangeet', tall: false },
@@ -36,10 +24,8 @@
 		{ id: 12, category: 'wedding', tall: true }
 	];
 
-	let active = $state<'all' | Category>('all');
-	const visible = $derived(
-		active === 'all' ? photos : photos.filter((p) => p.category === active)
-	);
+	let active = $state<'all' | ServiceKey>('all');
+	const visible = $derived(active === 'all' ? photos : photos.filter((p) => p.category === active));
 </script>
 
 <section class="section" id="work">
@@ -80,7 +66,7 @@
 		margin-top: 2rem;
 	}
 	.filter {
-		padding: 0.45rem 1rem;
+		padding: 0.7rem 1.15rem;
 		border: 1px solid var(--color-line);
 		border-radius: var(--radius-full);
 		background: transparent;
@@ -143,7 +129,7 @@
 		border-radius: var(--radius-full);
 	}
 
-	/* Placeholder colour per event type — replaced by real photos later. */
+	/* Placeholder colour per service — replaced by real photos later. */
 	.photo--wedding {
 		background: linear-gradient(150deg, var(--color-marigold), var(--color-marigold-deep));
 	}

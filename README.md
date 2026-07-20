@@ -11,15 +11,15 @@ a family business based in Mehsana, Gujarat, serving all of Gujarat + destinatio
 
 ## Stack
 
-| Layer      | Choice                                             |
-| ---------- | -------------------------------------------------- |
-| Framework  | SvelteKit + TypeScript                             |
-| Styling    | Tailwind CSS                                        |
-| Animation  | GSAP + Lenis + Svelte transitions                  |
-| Database   | PostgreSQL (Supabase) via Drizzle ORM              |
-| Auth       | Supabase Auth (admin)                              |
-| Media      | Cloudinary (photo + video CDN)                     |
-| i18n       | Paraglide JS — English ⇄ Gujarati                  |
+| Layer     | Choice                                |
+| --------- | ------------------------------------- |
+| Framework | SvelteKit + TypeScript                |
+| Styling   | Tailwind CSS                          |
+| Animation | GSAP + Lenis + Svelte transitions     |
+| Database  | PostgreSQL (Supabase) via Drizzle ORM |
+| Auth      | Supabase Auth (admin)                 |
+| Media     | Cloudinary (photo + video CDN)        |
+| i18n      | Paraglide JS — English ⇄ Gujarati     |
 
 ## Prerequisites
 

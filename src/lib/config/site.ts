@@ -6,8 +6,7 @@
  * (and the theme tokens in `src/lib/styles/theme.css`) is all that changes —
  * nothing here should be hardcoded elsewhere in the app.
  *
- * Values below are PLACEHOLDERS for the first instance (a family business in
- * Mehsana, Gujarat). Swap them for the real brand when available.
+ * Values below are for the first instance: a family business in Mehsana, Gujarat.
  */
 
 export interface SiteConfig {
@@ -19,6 +18,8 @@ export interface SiteConfig {
 	description: string;
 	/** Primary city / base of operations. */
 	city: string;
+	/** Full postal address, shown in the footer and used for local SEO. */
+	address: string;
 	/** Human-readable coverage area (drives copy + local SEO). */
 	serviceArea: string;
 	contact: {
@@ -38,22 +39,21 @@ export interface SiteConfig {
 }
 
 export const site: SiteConfig = {
-	name: 'Genda Decor', // placeholder brand
+	name: 'Jay Mahakali Flowers',
 	tagline: 'Flower & event decoration',
 	description:
 		'Wedding, mandap, haldi, sangeet and event flower decoration across Gujarat — from intimate ceremonies to grand celebrations.',
 	city: 'Mehsana, Gujarat',
+	address: 'Mahakali Chowk, Station Rd, nr. Azad Chowk, Shakti Nagar, Mehsana, Gujarat 384001',
 	serviceArea: 'All of Gujarat & destination events',
 	contact: {
-		phone: '+910000000000',
-		phoneDisplay: '+91 00000 00000',
-		whatsapp: '910000000000',
-		email: 'hello@example.com'
+		phone: '+917016250272',
+		phoneDisplay: '+91 70162 50272',
+		whatsapp: '917016250272',
+		email: 'jmahakaliflowers@gmail.com'
 	},
 	social: {
-		instagram: 'https://instagram.com/',
-		facebook: 'https://facebook.com/',
-		youtube: 'https://youtube.com/'
+		instagram: 'https://instagram.com/bhavikrami_003'
 	}
 };
 

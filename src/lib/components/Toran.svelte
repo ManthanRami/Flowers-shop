@@ -26,16 +26,8 @@
 			<!-- thread -->
 			<line x1="20" y1="0" x2="20" y2={6 + drop(i)} stroke="var(--color-leaf)" stroke-width="1.4" />
 			<!-- leaves -->
-			<path
-				d="M20 {8 + drop(i)} q -7 -1 -9 5 q 6 2 9 -5"
-				fill="var(--color-leaf)"
-				opacity="0.9"
-			/>
-			<path
-				d="M20 {8 + drop(i)} q 7 -1 9 5 q -6 2 -9 -5"
-				fill="var(--color-leaf)"
-				opacity="0.9"
-			/>
+			<path d="M20 {8 + drop(i)} q -7 -1 -9 5 q 6 2 9 -5" fill="var(--color-leaf)" opacity="0.9" />
+			<path d="M20 {8 + drop(i)} q 7 -1 9 5 q -6 2 -9 -5" fill="var(--color-leaf)" opacity="0.9" />
 			<g transform="translate(0 {drop(i)})">
 				<!-- petals -->
 				{#each outer as p (p.x + '-' + p.y)}

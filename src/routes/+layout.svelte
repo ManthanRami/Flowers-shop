@@ -51,16 +51,21 @@
 
 {@render children()}
 
-<footer class="site-footer" id="contact">
+<footer class="site-footer">
 	<div class="site-footer__brand">
 		<span class="wordmark__dot" aria-hidden="true"></span>
 		<span>{site.name}</span>
 	</div>
-	<p class="site-footer__meta">{site.serviceArea} · {site.city}</p>
+	<p class="site-footer__meta">{site.address}</p>
 	<p class="site-footer__meta">
 		<a href="tel:{site.contact.phone}">{site.contact.phoneDisplay}</a> ·
 		<a href="mailto:{site.contact.email}">{site.contact.email}</a>
 	</p>
+	{#if site.social.instagram}
+		<p class="site-footer__meta">
+			<a href={site.social.instagram} target="_blank" rel="noopener external">Instagram</a>
+		</p>
+	{/if}
 	<p class="site-footer__fine">© {site.name}. {m.footer_rights()}</p>
 </footer>
 

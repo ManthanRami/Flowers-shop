@@ -56,5 +56,27 @@
 	"about_value2": "On time, every time",
 	"about_value3": "Any scale, any venue",
 
+	"testimonials_eyebrow": "Kind words",
+	"testimonials_title": "Families we have decorated for",
+	"testimonial1_quote": "They turned our mandap into something out of a dream. Every flower was fresh on the morning of the wedding.",
+	"testimonial1_name": "Riya Patel",
+	"testimonial1_place": "Visnagar",
+	"testimonial2_quote": "We booked them for the haldi and ended up giving them the whole wedding. The team simply does not stop until it is right.",
+	"testimonial2_name": "Kishan Thakkar",
+	"testimonial2_place": "Mehsana",
+	"testimonial3_quote": "Our reception stage was the first thing every guest photographed. Worth every rupee.",
+	"testimonial3_name": "Ankita Shah",
+	"testimonial3_place": "Ahmedabad",
+
+	"contact_eyebrow": "Get in touch",
+	"contact_title": "Let's create something beautiful",
+	"contact_body": "Tell us a little about your celebration and we will get back to you with ideas and a clear quote.",
+	"form_name": "Your name",
+	"form_phone": "Phone number",
+	"form_date": "Event date",
+	"form_venue": "Venue or city",
+	"form_submit": "Send on WhatsApp",
+	"form_note": "This opens WhatsApp with your details filled in — nothing is sent until you press send there.",
+
 	"footer_rights": "All rights reserved."
 }

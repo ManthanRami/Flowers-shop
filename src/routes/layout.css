@@ -9,4 +9,6 @@
 @import '@fontsource/hind-vadodara/700.css';
 
 /* "Genda" design tokens + base styles */
-@import '$lib/styles/theme.css';
+/* Relative, not $lib — prettier-plugin-tailwindcss resolves this file itself
+   and cannot follow SvelteKit's aliases. */
+@import '../lib/styles/theme.css';

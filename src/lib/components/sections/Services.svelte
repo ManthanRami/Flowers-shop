@@ -1,14 +1,8 @@
 <script lang="ts">
 	import * as m from '$lib/paraglide/messages';
+	import { serviceList } from '$lib/config/services';
 
-	const services = $derived([
-		{ name: m.service_wedding_name(), desc: m.service_wedding_desc() },
-		{ name: m.service_haldi_name(), desc: m.service_haldi_desc() },
-		{ name: m.service_mehndi_name(), desc: m.service_mehndi_desc() },
-		{ name: m.service_sangeet_name(), desc: m.service_sangeet_desc() },
-		{ name: m.service_reception_name(), desc: m.service_reception_desc() },
-		{ name: m.service_corporate_name(), desc: m.service_corporate_desc() }
-	]);
+	const services = $derived(serviceList());
 </script>
 
 <section class="section" id="services">
@@ -18,7 +12,7 @@
 		<p class="lede">{m.services_body()}</p>
 
 		<ul class="grid">
-			{#each services as s (s.name)}
+			{#each services as s (s.key)}
 				<li class="card">
 					<span class="card__mark" aria-hidden="true"></span>
 					<h3 class="card__name">{s.name}</h3>
@@ -53,7 +47,11 @@
 		width: 1.6rem;
 		height: 1.6rem;
 		border-radius: var(--radius-full);
-		background: radial-gradient(circle at 30% 30%, var(--color-marigold), var(--color-marigold-deep));
+		background: radial-gradient(
+			circle at 30% 30%,
+			var(--color-marigold),
+			var(--color-marigold-deep)
+		);
 		box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-marigold) 18%, transparent);
 	}
 	.card:nth-child(3n + 2) .card__mark {

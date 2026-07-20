@@ -6,6 +6,8 @@
 	import Services from '$lib/components/sections/Services.svelte';
 	import Process from '$lib/components/sections/Process.svelte';
 	import About from '$lib/components/sections/About.svelte';
+	import Testimonials from '$lib/components/sections/Testimonials.svelte';
+	import Contact from '$lib/components/sections/Contact.svelte';
 
 	const stats = [
 		{ value: '15+', label: m.hero_stat_years() },
@@ -54,6 +56,8 @@
 <Services />
 <Process />
 <About />
+<Testimonials />
+<Contact />
 
 <style>
 	.hero {
@@ -71,9 +75,21 @@
 		inset: 0;
 		z-index: -2;
 		background:
-			radial-gradient(60% 55% at 30% 25%, color-mix(in srgb, var(--color-marigold) 65%, #000), transparent),
-			radial-gradient(55% 55% at 78% 30%, color-mix(in srgb, var(--color-rani) 60%, #000), transparent),
-			radial-gradient(70% 60% at 60% 100%, color-mix(in srgb, var(--color-leaf) 55%, #000), transparent),
+			radial-gradient(
+				60% 55% at 30% 25%,
+				color-mix(in srgb, var(--color-marigold) 65%, #000),
+				transparent
+			),
+			radial-gradient(
+				55% 55% at 78% 30%,
+				color-mix(in srgb, var(--color-rani) 60%, #000),
+				transparent
+			),
+			radial-gradient(
+				70% 60% at 60% 100%,
+				color-mix(in srgb, var(--color-leaf) 55%, #000),
+				transparent
+			),
 			var(--color-ink);
 	}
 	.hero__scrim {
@@ -141,17 +157,20 @@
 		text-decoration: none;
 		transition:
 			transform 0.18s ease,
+			filter 0.18s ease,
 			background 0.18s ease;
 	}
 	.btn:hover {
 		transform: translateY(-2px);
 	}
+	/* Ink rather than white on marigold: white gives 2.87:1 and fails WCAG AA,
+	   ink gives 5.92:1. Hover brightens instead of darkening for the same reason. */
 	.btn--primary {
 		background: var(--color-marigold);
-		color: #fff;
+		color: var(--color-ink);
 	}
 	.btn--primary:hover {
-		background: var(--color-marigold-deep);
+		filter: brightness(1.06);
 	}
 	.btn--ghost {
 		background: rgb(255 255 255 / 0.12);

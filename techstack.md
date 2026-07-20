@@ -132,18 +132,18 @@ Implemented in `src/lib/styles/theme.css` (Tailwind v4 `@theme`).
 
 **Palette:**
 
-| Role                    | Name              | Hex       |
-| ----------------------- | ----------------- | --------- |
-| Background              | Petal ivory       | `#FBF3EF` |
-| Surface                 | Warm surface      | `#F6E8E0` |
-| Text / ink              | Deep maroon-plum  | `#2A1620` |
-| Muted text              | Soft maroon       | `#6B4A55` |
-| Hairline / borders      | Line              | `#E6D3CA` |
-| Primary accent          | Marigold          | `#EA7A24` |
-| Primary (deep)          | Marigold deep     | `#C85F13` |
-| Secondary (the risk)    | Rani pink         | `#C42A6B` |
-| Fresh accent            | Leaf green        | `#3E6B4F` |
-| Metallic detail         | Gold              | `#C79A3E` |
+| Role                 | Name             | Hex       |
+| -------------------- | ---------------- | --------- |
+| Background           | Petal ivory      | `#FBF3EF` |
+| Surface              | Warm surface     | `#F6E8E0` |
+| Text / ink           | Deep maroon-plum | `#2A1620` |
+| Muted text           | Soft maroon      | `#6B4A55` |
+| Hairline / borders   | Line             | `#E6D3CA` |
+| Primary accent       | Marigold         | `#EA7A24` |
+| Primary (deep)       | Marigold deep    | `#C85F13` |
+| Secondary (the risk) | Rani pink        | `#C42A6B` |
+| Fresh accent         | Leaf green       | `#3E6B4F` |
+| Metallic detail      | Gold             | `#C79A3E` |
 
 **Type (self-hosted via Fontsource):**
 
