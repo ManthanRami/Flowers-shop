@@ -47,6 +47,7 @@
 	"dependencies": {
 		"@fontsource-variable/fraunces": "^5.2.9",
 		"@fontsource-variable/hanken-grotesk": "^5.2.8",
-		"@fontsource/hind-vadodara": "^5.2.8"
+		"@fontsource/hind-vadodara": "^5.2.8",
+		"@lucide/svelte": "^1.25.0"
 	}
 }

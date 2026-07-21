@@ -1,40 +1,45 @@
 /*
- * "Lovable" design tokens — ported from the Lovable prototype at
- * jaymahakali-blooms-showcase.lovable.app.
- *
- * Rose + gold on a warm near-white ground, Playfair Display over Lato.
- * Token names are semantic (primary/accent) rather than colour-named, so the
- * components read the same on either design branch.
+ * "Lovable" design tokens — Indian wedding theme.
+ * Maroon + plum ground, dusty rose and gold as accents, on soft cream.
  *
  * White-label: to rebrand, override the @theme color/font values here.
  */
 
 @theme {
 	/* ── Palette ─────────────────────────────────────────── */
-	--color-base: #fbfaf9; /* warm near-white ground */
-	--color-surface: #f1eeef; /* raised cards / alt sections */
-	--color-ink: #361721; /* deep maroon-plum — primary text */
-	--color-ink-soft: #8a5c6b; /* muted mauve — secondary text */
-	--color-line: #e7dade; /* hairline borders / dividers */
+	--color-base: #fbfaf9; /* soft cream ground */
+	--color-surface: #f4eff0; /* muted alt sections */
+	--color-ink: #2c1119; /* body text */
+	--color-ink-soft: #7a5663; /* secondary text */
+	--color-line: #e7dade; /* hairline borders */
 
-	/* Lovable ships primary at #dd3c57, which is only 4.32:1 against white and
-	   fails WCAG AA for button text. Darkened to 5.07:1; visually near-identical. */
-	--color-primary: #d42543; /* rose — CTAs, active states */
-	--color-primary-deep: #a01c32;
-	--color-accent: #ac5371; /* muted mauve-pink — secondary detail */
-	--color-gold: #d9a520; /* metallic gold — always pairs with ink text */
-	--color-maroon: #1b0e12; /* deep maroon — full-bleed dark sections */
+	--color-primary: #b31933; /* rich maroon — CTAs, headings accent */
+	--color-primary-deep: #8a1327;
+	--color-plum: #732660; /* deep plum — dark sections, footer */
+	--color-plum-deep: #4a1740;
+	--color-rose: #b87a8f; /* dusty rose — decorative only, 3.24:1 */
+	--color-wine: #8a2849;
+
+	/* Gold needs three values: the spec's gold is 2.15:1 on cream and 4.30:1 on
+	   plum, so it is decorative only. The -ink and -light variants are the
+	   text-safe versions on light and dark grounds respectively. */
+	--color-gold: #d9a520; /* dividers, icon fills, borders */
+	--color-gold-ink: #8a670f; /* gold-toned text on cream — 5.00:1 */
+	--color-gold-light: #e1b137; /* gold text on plum — 4.85:1 */
 
 	/* ── Type ────────────────────────────────────────────── */
 	--font-display: 'Playfair Display', 'Hind Vadodara', ui-serif, Georgia, serif;
 	--font-body: 'Lato', 'Hind Vadodara', ui-sans-serif, system-ui, sans-serif;
 	--font-gujarati: 'Hind Vadodara', ui-sans-serif, system-ui, sans-serif;
 
-	/* ── Radii ───────────────────────────────────────────── */
+	/* ── Radii + shadow ──────────────────────────────────── */
 	--radius-sm: 0.375rem;
-	--radius-md: 0.75rem;
+	--radius-md: 0.75rem; /* base radius per spec */
 	--radius-lg: 1.25rem;
 	--radius-full: 999px;
+
+	--shadow-soft: 0 4px 16px -4px rgb(179 25 51 / 0.14);
+	--shadow-lift: 0 12px 28px -8px rgb(179 25 51 / 0.24);
 }
 
 /* ── Base layer ─────────────────────────────────────────── */
@@ -49,6 +54,7 @@
 		color: var(--color-ink);
 		-webkit-font-smoothing: antialiased;
 		text-rendering: optimizeLegibility;
+		scroll-behavior: smooth;
 	}
 
 	/* Gujarati: Playfair has no Gujarati glyphs — use Hind Vadodara throughout. */
@@ -65,8 +71,8 @@
 	h3,
 	h4 {
 		font-family: var(--font-display);
-		font-weight: 500;
-		line-height: 1.1;
+		font-weight: 600;
+		line-height: 1.15;
 		letter-spacing: -0.01em;
 		text-wrap: balance;
 	}
@@ -89,18 +95,20 @@
 
 	/* Quality floor: respect reduced-motion. */
 	@media (prefers-reduced-motion: reduce) {
+		html {
+			scroll-behavior: auto;
+		}
 		*,
 		*::before,
 		*::after {
 			animation-duration: 0.001ms !important;
 			animation-iteration-count: 1 !important;
 			transition-duration: 0.001ms !important;
-			scroll-behavior: auto !important;
 		}
 	}
 }
 
-/* ── Shared section primitives ──────────────────────────── */
+/* ── Shared primitives ──────────────────────────────────── */
 @layer components {
 	.wrap {
 		width: 100%;
@@ -113,18 +121,34 @@
 		padding-block: clamp(3.5rem, 8vw, 6rem);
 	}
 
-	.eyebrow {
-		font-size: 0.8rem;
-		font-weight: 600;
-		letter-spacing: 0.14em;
+	/* Gold pill divider — the spec's recurring section marker. */
+	.divider {
+		width: 24px;
+		height: 4px;
+		border-radius: var(--radius-full);
+		background: var(--color-gold);
+		border: 0;
+		margin: 1rem 0 0;
+	}
+	.divider--center {
+		margin-inline: auto;
+	}
+
+	.badge {
+		display: inline-block;
+		padding: 0.4rem 0.9rem;
+		border-radius: var(--radius-full);
+		background: color-mix(in srgb, var(--color-gold) 18%, transparent);
+		color: var(--color-gold-ink);
+		font-size: 0.78rem;
+		font-weight: 700;
+		letter-spacing: 0.08em;
 		text-transform: uppercase;
-		color: var(--color-primary);
 	}
 
 	.section-title {
-		margin-top: 0.75rem;
+		margin-top: 1rem;
 		font-size: clamp(1.9rem, 4.5vw, 3rem);
-		font-weight: 400;
 		max-width: 20ch;
 	}
 
@@ -132,7 +156,27 @@
 		margin-top: 1rem;
 		max-width: 46ch;
 		font-size: 1.08rem;
-		line-height: 1.6;
+		line-height: 1.65;
 		color: var(--color-ink-soft);
+	}
+
+	/* Scroll reveal — paired with the `reveal` action. Elements start shifted
+	   and fade in once; the action adds .is-visible. */
+	.reveal {
+		opacity: 0;
+		transform: translateY(32px);
+		transition:
+			opacity 0.6s ease-out,
+			transform 0.6s ease-out;
+	}
+	.reveal.is-visible {
+		opacity: 1;
+		transform: none;
+	}
+	@media (prefers-reduced-motion: reduce) {
+		.reveal {
+			opacity: 1;
+			transform: none;
+		}
 	}
 }

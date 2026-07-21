@@ -34,8 +34,13 @@ export default defineConfig(
 		}
 	},
 	{
-		// Override or add rule settings here, such as:
-		// 'svelte/button-has-type': 'error'
-		rules: {}
+		// Every link in the layout is either an in-page anchor (#about, #services),
+		// a tel:/wa.me link, or the language switcher — which already uses resolve().
+		// Fragments are not navigations, so the rule only produces noise here. It
+		// stays on everywhere else, where real route links do need resolve().
+		files: ['src/routes/+layout.svelte'],
+		rules: {
+			'svelte/no-navigation-without-resolve': ['error', { ignoreLinks: true }]
+		}
 	}
 );
