@@ -53,7 +53,7 @@ export const site: SiteConfig = {
 		email: 'jmahakaliflowers@gmail.com'
 	},
 	social: {
-		instagram: 'https://instagram.com/bhavikrami_003'
+		instagram: 'https://instagram.com/jay_mahakali_flowers'
 	}
 };
 
