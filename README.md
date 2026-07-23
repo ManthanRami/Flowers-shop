@@ -9,7 +9,16 @@ small, fixed set of files. See [Rebranding](#rebranding-white-label) below.
 First instance: a family business based in Mehsana, Gujarat, serving all of Gujarat +
 destination events.
 
-> See [`techstack.md`](./techstack.md) for the full stack rationale and decisions log.
+> See [`docs/techstack.md`](./docs/techstack.md) for the full stack rationale and decisions
+> log. The original design brief and review notes live in [`docs/`](./docs) too.
+
+## Branches
+
+| Branch        | Purpose                                                         |
+| ------------- | --------------------------------------------------------------- |
+| `main`        | Stable snapshot of the static marketing site                    |
+| `development` | Active work: database + dynamic photo/video integration         |
+| `static-site` | The simple static webapp, with all database scaffolding removed |
 
 ## Stack
 
