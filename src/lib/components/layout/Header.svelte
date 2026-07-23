@@ -21,6 +21,7 @@
 <header class="site-header" class:is-solid={scrolled || menuOpen}>
 	<div class="bar wrap">
 		<a class="wordmark" href={resolve('/')}>
+			<span class="brand-mark" aria-hidden="true"></span>
 			<span class="wordmark__name">{m.hero_brand()}</span>
 			<span class="wordmark__accent">{m.hero_brand_accent()}</span>
 		</a>
@@ -94,11 +95,25 @@
 	}
 
 	.wordmark {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
 		font-family: var(--font-display);
 		font-size: 1.4rem;
 		font-weight: 700;
 		text-decoration: none;
 		white-space: nowrap;
+	}
+	/* The wreath monogram from the logo, recoloured via CSS mask so it can
+	   follow the same white-over-photo / maroon-when-solid switch as the text. */
+	.brand-mark {
+		width: 34px;
+		height: 34px;
+		background: var(--color-primary);
+		mask: url('/logos/medallion.png') center / contain no-repeat;
+	}
+	.site-header:not(.is-solid) .brand-mark {
+		background: #fff;
 	}
 	.wordmark__name {
 		color: var(--color-primary);

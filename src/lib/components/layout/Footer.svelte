@@ -12,6 +12,7 @@
 	<div class="wrap footer-grid">
 		<div>
 			<p class="footer-brand">
+				<span class="brand-mark" aria-hidden="true"></span>
 				<span class="wordmark__name">{m.hero_brand()}</span>
 				<span class="wordmark__accent">{m.hero_brand_accent()}</span>
 			</p>
@@ -52,6 +53,12 @@
 				>
 					<MessageCircle size={18} />
 				</a>
+			</div>
+
+			<div class="review">
+				<!-- White padding preserves the QR quiet zone on the dark footer. -->
+				<img src="/images/review-qr.png" alt="" width="88" height="88" />
+				<p>{m.footer_review()}</p>
 			</div>
 		</div>
 
@@ -96,9 +103,19 @@
 		}
 	}
 	.footer-brand {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
 		font-family: var(--font-display);
 		font-size: 1.35rem;
 		font-weight: 700;
+	}
+	/* Same masked wreath monogram as the header, in footer gold. */
+	.brand-mark {
+		width: 34px;
+		height: 34px;
+		background: var(--color-gold-light);
+		mask: url('/logos/medallion.png') center / contain no-repeat;
 	}
 	.footer-brand .wordmark__name {
 		color: #fff;
@@ -133,6 +150,23 @@
 		background: var(--color-gold);
 		border-color: var(--color-gold);
 		color: var(--color-plum-deep);
+	}
+
+	.review {
+		display: flex;
+		align-items: center;
+		gap: 0.8rem;
+		margin-top: 1.5rem;
+	}
+	.review img {
+		background: #fff;
+		padding: 6px;
+		border-radius: var(--radius-md);
+	}
+	.review p {
+		max-width: 16ch;
+		font-size: 0.9rem;
+		line-height: 1.5;
 	}
 
 	.footer-heading {
