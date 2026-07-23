@@ -118,6 +118,13 @@ catalogues.
 
 Hero and gallery images, referenced from the Gallery and hero sections.
 
+### 7. Favicons — [`static/`](./static) + [`src/app.html`](./src/app.html)
+
+`favicon.ico`, `favicon.png` and `apple-touch-icon.png` are generated from the
+business logo (currently the MF medallion cropped from `static/images/logo.jpg`).
+Regenerate them from the new logo, and update the `theme-color` hex in `app.html`
+to match the new brand's primary colour — it tints the mobile browser chrome.
+
 ### Rebrand checklist
 
 - [ ] `site.ts` — business name, contact details, social links
@@ -125,7 +132,9 @@ Hero and gallery images, referenced from the Gallery and hero sections.
 - [ ] `layout.css` — font imports, if changing typefaces
 - [ ] `en.json` + `gu.json` — all copy, **including real testimonials**
 - [ ] `services.ts` — the service list for this business
-- [ ] `static/images/` — replace hero + gallery photography
+- [ ] `static/images/` — replace hero + gallery photography (including `logo.jpg`)
+- [ ] `static/favicon.*` + `apple-touch-icon.png` — regenerate from the new logo
+- [ ] `src/app.html` — `theme-color` to the new brand colour
 - [ ] `package.json` — the `name` field
 
 ## Internationalization
