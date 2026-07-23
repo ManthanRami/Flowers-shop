@@ -6,11 +6,14 @@ import {
 	PartyPopper,
 	Flower2,
 	Sparkles,
+	Landmark,
+	Tent,
 	type Icon
 } from '@lucide/svelte';
 import * as m from '$lib/paraglide/messages';
 
-export type ServiceKey = 'wedding' | 'corporate' | 'car' | 'room' | 'event' | 'custom' | 'haldi';
+export type ServiceKey =
+	'wedding' | 'corporate' | 'car' | 'room' | 'event' | 'custom' | 'haldi' | 'temple' | 'home';
 
 export interface Service {
 	key: ServiceKey;
@@ -59,6 +62,18 @@ export function serviceList(): Service[] {
 			name: m.service_haldi_name(),
 			desc: m.service_haldi_desc(),
 			icon: Sparkles
+		},
+		{
+			key: 'temple',
+			name: m.service_temple_name(),
+			desc: m.service_temple_desc(),
+			icon: Landmark
+		},
+		{
+			key: 'home',
+			name: m.service_home_name(),
+			desc: m.service_home_desc(),
+			icon: Tent
 		}
 	];
 }

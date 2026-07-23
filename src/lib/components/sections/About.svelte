@@ -1,12 +1,14 @@
 <script lang="ts">
 	import * as m from '$lib/paraglide/messages';
+	import { site } from '$lib/config/site';
 	import { reveal } from '$lib/actions/reveal';
 	import { Clock, Users, Heart, Award } from '@lucide/svelte';
 
-	// UNVERIFIED: these figures came from the design brief, not from the business.
-	// They must be confirmed or removed before launch.
+	// The founding year is confirmed by the business. The three figures below are
+	// UNVERIFIED — they came from the design brief and must be confirmed or
+	// removed before launch.
 	const stats = $derived([
-		{ value: '15+', label: m.stat_years_label(), icon: Clock },
+		{ value: String(site.foundedYear), label: m.stat_since_label(), icon: Clock },
 		{ value: '5000+', label: m.stat_clients_label(), icon: Users },
 		{ value: '10000+', label: m.stat_events_label(), icon: Heart },
 		{ value: '100%', label: m.stat_satisfaction_label(), icon: Award }

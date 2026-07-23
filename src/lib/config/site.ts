@@ -16,6 +16,8 @@ export interface SiteConfig {
 	tagline: string;
 	/** One-sentence description used for meta tags and hero copy. */
 	description: string;
+	/** Year the business was founded. Drives the "since" copy and the About stat. */
+	foundedYear: number;
 	/** Primary city / base of operations. */
 	city: string;
 	/** Full postal address, shown in the footer and used for local SEO. */
@@ -40,9 +42,10 @@ export interface SiteConfig {
 
 export const site: SiteConfig = {
 	name: 'Jay Mahakali Flowers',
-	tagline: 'Flower & event decoration',
+	tagline: 'Premier event decorators since 1949',
 	description:
-		'Wedding, mandap, haldi, sangeet and event flower decoration across Gujarat — from intimate ceremonies to grand celebrations.',
+		'Mehsana’s premier event decorators since 1949. Weddings, haldi, car decoration, home functions, temple events and office galas — premium floral and traditional décor across Gujarat.',
+	foundedYear: 1949,
 	city: 'Mehsana, Gujarat',
 	address: 'Mahakali Chowk, Station Rd, nr. Azad Chowk, Shakti Nagar, Mehsana, Gujarat 384001',
 	serviceArea: 'All of Gujarat & destination events',
