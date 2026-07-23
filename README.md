@@ -14,11 +14,11 @@ destination events.
 
 ## Branches
 
-| Branch        | Purpose                                                         |
-| ------------- | --------------------------------------------------------------- |
-| `main`        | Stable snapshot of the static marketing site                    |
-| `development` | Active work: database + dynamic photo/video integration         |
-| `static-site` | The simple static webapp, with all database scaffolding removed |
+| Branch        | Purpose                                                                        |
+| ------------- | ------------------------------------------------------------------------------ |
+| `main`        | Stable branch — updated by merging `development`                               |
+| `development` | Active work: database + dynamic photo/video integration                        |
+| `static-site` | Frozen simple static webapp (no database); only receives static-relevant fixes |
 
 ## Stack
 
