@@ -150,5 +150,21 @@ hardcoded strings. Paraglide compiles these at build time; the compiled output i
 
 ## Deployment
 
-Hosting target is not yet chosen; the app uses `@sveltejs/adapter-auto`. Pick a specific
-adapter (Vercel / Netlify / Cloudflare / Node) when the deploy platform is decided.
+The app deploys to **Cloudflare Pages** via `@sveltejs/adapter-cloudflare`. The adapter is
+configured inline in [`vite.config.ts`](./vite.config.ts) (this project has no separate
+`svelte.config.js`). To switch hosts, swap that adapter and its dev dependency for another.
+
+In the Cloudflare Pages dashboard, connect the GitHub repo and set:
+
+| Setting                | Value                                          |
+| ---------------------- | ---------------------------------------------- |
+| Build command          | `pnpm build`                                   |
+| Build output directory | `.svelte-kit/cloudflare`                       |
+| Production branch      | `main` (or `development` for a preview deploy) |
+
+No environment variables are required today — nothing imports the Postgres database at
+runtime, so the `postgres` driver is not bundled into the Worker.
+
+> **When the database gets wired up:** the `postgres` driver does not run on Cloudflare's
+> Workers runtime. Switch to an HTTP-based Postgres driver (e.g. Neon serverless, or
+> Cloudflare Hyperdrive) or Cloudflare D1 before using the DB in server code.
