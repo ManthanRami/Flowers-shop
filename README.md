@@ -154,15 +154,24 @@ The app deploys to **Cloudflare Pages** via `@sveltejs/adapter-cloudflare`. The 
 configured inline in [`vite.config.ts`](./vite.config.ts) (this project has no separate
 `svelte.config.js`). To switch hosts, swap that adapter and its dev dependency for another.
 
-In the Cloudflare Pages dashboard, connect the GitHub repo and set:
+In the Cloudflare dashboard, connect the GitHub repo and set the build configuration.
+On the current (Workers Builds) runner the **Deploy command is required**, so we deploy the
+Pages output explicitly with Wrangler (`wrangler` is a direct devDependency so it resolves
+on the build runner):
 
-| Setting                | Value                                          |
-| ---------------------- | ---------------------------------------------- |
-| Build command          | `pnpm build`                                   |
-| Build output directory | `.svelte-kit/cloudflare`                       |
-| Production branch      | `main` (or `development` for a preview deploy) |
+| Setting                | Value                                                                       |
+| ---------------------- | --------------------------------------------------------------------------- |
+| Build command          | `pnpm build`                                                                |
+| Deploy command         | `npx wrangler pages deploy .svelte-kit/cloudflare --project-name=<PROJECT>` |
+| Build output directory | `.svelte-kit/cloudflare`                                                    |
+| Production branch      | `main` (or `development` for a preview deploy)                              |
 
-No environment variables are required today — nothing imports the Postgres database at
+Replace `<PROJECT>` with the exact Pages project name (shown at the top of the project in
+the dashboard). Wrangler authenticates automatically inside Cloudflare's build environment,
+so no API token needs to be set. `wrangler deploy` (without `pages`) is the _Workers_
+command and will fail here — the adapter builds Pages output because `CF_PAGES` is set.
+
+No other environment variables are required today — nothing imports the Postgres database at
 runtime, so the `postgres` driver is not bundled into the Worker.
 
 > **When the database gets wired up:** the `postgres` driver does not run on Cloudflare's
