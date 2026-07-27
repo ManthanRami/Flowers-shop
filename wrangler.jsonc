@@ -1,0 +1,18 @@
+{
+	// Cloudflare Pages deployment config, read by `wrangler pages deploy` and by
+	// the SvelteKit adapter (which builds Pages output when `pages_build_output_dir`
+	// is set). See README → Deployment.
+
+	// The Cloudflare Pages project name. Change this to match your project, or
+	// override it per-deploy with `wrangler pages deploy --project-name=<name>`.
+	"name": "flowers-shop",
+
+	// Where `pnpm build` (adapter-cloudflare) writes the deployable output.
+	"pages_build_output_dir": ".svelte-kit/cloudflare",
+
+	// `nodejs_compat` is required: the SvelteKit server hooks use AsyncLocalStorage
+	// (node:async_hooks). Without it the Worker builds but throws at runtime.
+	// nodejs_compat needs a compatibility date of 2024-09-23 or later.
+	"compatibility_date": "2024-09-23",
+	"compatibility_flags": ["nodejs_compat"]
+}

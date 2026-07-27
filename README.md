@@ -140,6 +140,7 @@ mobile browser chrome.
 - [ ] `static/favicon.*` + `apple-touch-icon.png` — regenerate from the new logo
 - [ ] `src/app.html` — `theme-color` to the new brand colour
 - [ ] `package.json` — the `name` field
+- [ ] `wrangler.jsonc` — the `name` field (Cloudflare Pages project name)
 
 ## Internationalization
 
@@ -152,24 +153,42 @@ hardcoded strings. Paraglide compiles these at build time; the compiled output i
 
 The app deploys to **Cloudflare Pages** via `@sveltejs/adapter-cloudflare`. The adapter is
 configured inline in [`vite.config.ts`](./vite.config.ts) (this project has no separate
-`svelte.config.js`). To switch hosts, swap that adapter and its dev dependency for another.
+`svelte.config.js`). Runtime settings live in [`wrangler.jsonc`](./wrangler.jsonc). To
+switch hosts, swap that adapter and its dev dependency for another.
 
-In the Cloudflare dashboard, connect the GitHub repo and set the build configuration.
-On the current (Workers Builds) runner the **Deploy command is required**, so we deploy the
-Pages output explicitly with Wrangler (`wrangler` is a direct devDependency so it resolves
-on the build runner):
+[`wrangler.jsonc`](./wrangler.jsonc) pins the important bits so they are version-controlled
+rather than hidden in the dashboard:
 
-| Setting                | Value                                                                       |
-| ---------------------- | --------------------------------------------------------------------------- |
-| Build command          | `pnpm build`                                                                |
-| Deploy command         | `npx wrangler pages deploy .svelte-kit/cloudflare --project-name=<PROJECT>` |
-| Build output directory | `.svelte-kit/cloudflare`                                                    |
-| Production branch      | `main` (or `development` for a preview deploy)                              |
+- `pages_build_output_dir` — the folder `pnpm build` produces (`.svelte-kit/cloudflare`).
+- `compatibility_flags: ["nodejs_compat"]` — **required.** The SvelteKit server hooks use
+  `AsyncLocalStorage` (`node:async_hooks`); without this flag the Worker builds but throws
+  at runtime. It needs a `compatibility_date` of `2024-09-23` or later.
+- `name` — the Pages project name. **Change this to match your project** (or override it
+  per-deploy with `--project-name`).
 
-Replace `<PROJECT>` with the exact Pages project name (shown at the top of the project in
-the dashboard). Wrangler authenticates automatically inside Cloudflare's build environment,
-so no API token needs to be set. `wrangler deploy` (without `pages`) is the _Workers_
-command and will fail here — the adapter builds Pages output because `CF_PAGES` is set.
+In the Cloudflare dashboard, connect the GitHub repo and set the build configuration. On the
+current (Workers Builds) runner the **Deploy command is required**, so we deploy the Pages
+output explicitly with Wrangler (`wrangler` is a direct devDependency so it resolves on the
+build runner, and it reads `wrangler.jsonc` for the output dir + compatibility flags):
+
+| Setting                | Value                                                |
+| ---------------------- | ---------------------------------------------------- |
+| Build command          | `pnpm build`                                         |
+| Deploy command         | `npx wrangler pages deploy --project-name=<PROJECT>` |
+| Build output directory | `.svelte-kit/cloudflare`                             |
+| Production branch      | `main` (or `development` for a preview deploy)       |
+
+Replace `<PROJECT>` with the exact Pages project name (shown at the top of the project in the
+dashboard). Wrangler authenticates automatically inside Cloudflare's build environment, so no
+API token needs to be set. Note it is `wrangler pages deploy` — plain `wrangler deploy` is
+the _Workers_ command and will fail here.
+
+You can exercise the exact production artifact locally with the real Workers runtime:
+
+```sh
+pnpm build
+npx wrangler pages dev .svelte-kit/cloudflare   # reads wrangler.jsonc; serves on :8788
+```
 
 No other environment variables are required today — nothing imports the Postgres database at
 runtime, so the `postgres` driver is not bundled into the Worker.
